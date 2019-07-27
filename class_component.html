@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/react.development.js"></script>
+    <script src="./lib/react-dom.development.js"></script>
+    <script src="./lib/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    
+</body>
+<script type="text/babel">
+    class Welcome extends React.Component {
+
+        constructor(props){
+            super(props);
+            this.state={
+                count:0
+            };
+            // 第一种  方式  将组件的方法进行  this绑定  正确的处理this 问题 
+            // this.increment=this.increment.bind(this);
+        }
+        increment(){
+            // alert("hello");
+            let count=this.state.count +1;
+
+            //需要通过  调用  this.setState 方法来更新数据  这样才会将最新的数据 渲染到界面中
+            this.setState({
+                count:count
+            })
+            console.log(this);
+        }
+
+        decrement(){
+            //不要直接 调用 this.state.count --  这样不起作用
+            this.setState({
+                count:this.state.count -1
+            })
+        }
+
+        render(){
+            return(
+                <div>
+                    <h2>欢迎{this.props.name}第{this.state.count}次视察工作</h2>
+                    {/*<button onClick={this.increment}>add</button> */}
+
+                    {/* 第二种 事件 绑定this 方式*/}
+                    {/*<button onClick={this.increment.bind(this)}>addCount</button>*/}
+
+                    {/* 第三种 事件处理 直接通过函数处理 */}
+                    <button onClick={e =>this.increment()}>addCount</button>
+                    <hr/>
+                    <button onClick={e =>this.decrement()}>delCount</button>
+                </div>
+            )
+        }
+    }
+
+
+    ReactDOM.render(<Welcome name="领导"/>,document.getElementById('app'));
+</script>
+</html>

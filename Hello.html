@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--react.development  react 库的核心文件  -->
+    <script src="./lib/react.development.js"></script>
+     <!-- react 库的核心文件,提供 dom 渲染操作    -->
+    <script src="./lib/react-dom.development.js"></script>
+    <!-- babel.min.js 将 jsx 语法 转换为浏览器认识的js语法    -->
+    <script src="./lib/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    
+    <!-- ReactDOM.render(<div>hello world</div>,document.getElementById('app')) -->
+
+    <!-- 
+
+    let hello=
+        <div>hello world!
+            <p>7月22号</p>
+        </div>
+        ReactDOM.render(hello,document.getElementById('app')) -->
+</body>
+<!--注意  设置 type 属性 为text/babel 用来将jsx 语法 转换为普通 js  -->
+<script type="text/babel">
+
+    //用函数声明 表示一个组件Welcome
+    function Welcome(props){
+        return (
+            <h2>{props.name} react{props.doing}</h2>
+        )
+    }
+
+    // Hello  组件
+    function Hello(props) { 
+        return (
+            <div>
+                hello world!!!!
+                <Welcome name={props.name} doing={props.doing}/>
+           
+            </div>
+        )
+    }
+    ReactDOM.render(
+        <Hello  name="学习" doing="第一天"/>, 
+        document.getElementById('app')
+    )
+
+    // 方式一    直接调用函数  来生成  虚拟 dom  元素
+
+    //方式二   写标签  来生成  虚拟 dom  元素
+
+
+
+
+</script>
+</html>

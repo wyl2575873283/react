@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   function combo(msg){
+  var arr = msg.split("-");
+  var len = arr.length;  //将arr.length存储在一个局部变量可以提高for循环效率
+  for(var i=1;i<len;i++){
+    arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+    
+  }
+console.log(arr);
+  msg=arr.join("");
+  return msg;
+}
+
+var msg="get-element-by-id";
+combo( msg);
+
+
+       
+
+</script>
+</html>
